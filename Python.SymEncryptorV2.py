@@ -10,25 +10,24 @@ correspond to a letter to try and confuse anyone trying to break the cipher
 # ENCRYPTOR V2.2.2
 # Kieran (MIT License)
 
-# THE IMPORT OF SOME EXTRA LIBARIES 
-import sys
 """
 Being pseudorandom, the random libary perhaps isn't the best for an encryption
 machine but this is more proof of concept
 """
-import random 
+import random
+systemRandom = random.SystemRandom()
 
 # THE ALPHABET OR TABLE THAT THIS PROGERM REFERS TO
 """
 The allowed alphabet is fairly minimal, any lowercase character is converted to
 uppercase. The only punctuation allowed is '.' and ' ' to improve readability of
-the output 
+the output
 """
 alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q',
             'R','S','T','U','V','W','X','Y','Z',' ','.','0','1','2','3','4','5',
             '6','7','8','9']
 
-# THE ENCRYPTION KEYS 
+# THE ENCRYPTION KEYS
 encryptionKeyA = ['KYL', 'JTD', 'RXQ', 'WEF', 'BRG', 'AWS', 'LHM', 'KWK', 'UIK',
                   'EHQ', 'GVT', 'UKE', 'WLV', 'HGI', 'KRI', 'PUE', 'HJB', 'FVL',
                   'ORQ', 'ROD', 'JKH', 'QOT', 'QLU', 'YSJ', 'JNT', 'PBC', 'HNC',
@@ -45,7 +44,7 @@ falseEncryption = ['EQS', 'NPO', 'PKA', 'FGA', 'BWR', 'PIE', 'IFE', 'GUM', 'XIN'
                    'RKX', 'LOM', 'HVD', 'GIG', 'KRE', 'VVJ', 'HFY', 'QJU', 'VXB',
                    'OIF', 'XCE']
 
-# RUN AGAIN - THE MODULAR FUNCTION TO ASK THE USER WHETHER THEY WOULD LIKE TO 
+# RUN AGAIN - THE MODULAR FUNCTION TO ASK THE USER WHETHER THEY WOULD LIKE TO
 # RUN THE CODE AGAIN
 def runAgain(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
     
@@ -75,17 +74,17 @@ def encrypt(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
         for i in range(38):
             # Text the charachter is in the allowed alphabet
             if string[x] == alphabet[i]:
-                encryptChoice = random.randint(0,1)
+                encryptChoice = systemRandom.randint(0,1)
                 if encryptChoice == 0:
                     new = new + encryptionKeyA[i]
                 elif encryptChoice == 1:
                     new = new + encryptionKeyB[i]
                 # Add a random element from the false key
-                new = new + falseEncryption[random.randint(0,26)]
+                new = new + falseEncryption[systemRandom.randint(0,26)]
     print ("\nHere is the new, encrypted message:\n\n"+new)
     runAgain(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption)
 
-# THE DECODING PROCESS 
+# THE DECODING PROCESS
 def decode(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
     # Get user input
     string = input("\nPlease input the message to decode as it was printed exactly \n\n>>>")
@@ -102,7 +101,7 @@ def decode(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
     print ("\nHere is the original, decoded message:\n\n"+new)
     runAgain(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption)
 
-# THE MENU FOR THE PROGRAM 
+# THE MENU FOR THE PROGRAM
 def main(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
 
     print ("\nMain Menu:")
@@ -119,11 +118,11 @@ def main(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
 
 # THE INITIAL STARTUP PROCESS, SEPERATE FROM THE MENU SO IT ONLY RUNS ONCE
 def preStart(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
-    
+
     print ("Welcome to the encryption machine version 2.2.2!")
     print ("Designed and developed by Kieran.")
     main(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption)
 
-# THE COMMAND EXCECUTED TO START THE PROGRAM 
+# THE COMMAND EXCECUTED TO START THE PROGRAM
 preStart(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption)
 
