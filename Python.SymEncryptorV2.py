@@ -47,7 +47,7 @@ falseEncryption = ['EQS', 'NPO', 'PKA', 'FGA', 'BWR', 'PIE', 'IFE', 'GUM', 'XIN'
 # RUN AGAIN - THE MODULAR FUNCTION TO ASK THE USER WHETHER THEY WOULD LIKE TO
 # RUN THE CODE AGAIN
 def runAgain(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
-    
+
     try:
         play = str(input ("\nWould you like to run again? \n\n>>>"))
         play = play.lower()
@@ -63,9 +63,9 @@ def runAgain(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
         print ("\n!PLEASE TYPE 'YES' OR 'NO'!")
         runAgain(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption)
 
-# THE ENCRYPTION PROCESS 
+# THE ENCRYPTION PROCESS
 def encrypt(alphabet,encryptionKeyA,encryptionKeyB,falseEncryption):
-    # Get user input 
+    # Get user input
     string = input("\nPlease input the message to encrypt \n\n>>>")
     string = string.upper()
     # The encrypted text
